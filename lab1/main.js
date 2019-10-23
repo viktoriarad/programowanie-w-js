@@ -1,4 +1,4 @@
-const btn = document.querySelector('button');
+const btn = document.querySelector('.btn-klik');
 const div = document.querySelector('div');
 const counter = document.querySelector('.counterBtn');
 
@@ -10,6 +10,7 @@ btn.addEventListener('click', (e) => {
 })
 
 counter.addEventListener('click', (e) => {
+  counter.disabled = true;
   oblicznieInterwal = setInterval(wypiszLiczbe, 500);
 })
 
