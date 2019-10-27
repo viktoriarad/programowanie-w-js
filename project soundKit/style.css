@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 40px 20px;
+  padding: 20px 20px;
   border-bottom: 1px solid #2b102d;
 }
 
@@ -31,7 +31,7 @@ body {
   font-family: 'Monoton', cursive;
   letter-spacing: 2px;
   word-spacing: 10px;
-  /* animation: title-animation 4s linear infinite; */
+  /* animation: title-animation 2s linear infinite; */
 }
 
 @keyframes title-animation {
@@ -39,17 +39,11 @@ body {
     color: #2b102d;
   }
 
-  25% {
-    color: #1cb2a4;
-  }
 
   50% {
     color: #f49937;
   }
 
-  75% {
-    color: #63c0ba;
-  }
 
   100% {
     color: #2b102d;
@@ -59,7 +53,7 @@ body {
 
 
 .instrumets__wrapper {
-  width: 80%;
+  width: 70%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -90,3 +84,132 @@ body {
 .instruments__instruction-content {
   margin-top: 10px;
 }
+
+
+.player__rec-circle {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 1px;
+  background-color: red;
+
+}
+
+.player__container-tracks {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.player__track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+.player__rec,
+.player__del {
+  line-height: 20px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  border: 1px solid #2b102d;
+  background-color: #fee3bf;
+  color: #2b102d;
+  margin: 0 5px;
+}
+
+.player__music-track {
+  width: 40%;
+  height: 20px;
+  background-color: #b8bebe;
+  margin-left: 5px;
+  border: 1px solid #2b102d;
+  display: inline-block;
+}
+
+.recorded {
+  background-color: #63c0ba;
+}
+
+
+.player__play {
+  position: relative;
+  margin: 0 auto 10px auto;
+  width: 80px;
+  height: 80px;
+  background-color: #fee3bf;
+  border: 2px solid #61225f;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.player__play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, -50%);
+  border-top: 20px solid transparent;
+  border-left: 30px solid #61225f;
+  border-bottom: 20px solid transparent;
+}
+
+.player__play:hover {
+  background-color: #61225f;
+}
+
+.player__play:hover.player__play::after {
+  border-left: 30px solid #fee3bf;
+}
+
+
+.player__checkbox {
+  width: 20px;
+  position: relative;
+  margin: -2px 0 0 10px;
+}
+
+.player__checkbox label {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fcfff4;
+  border: 1px solid #2b102d;
+  /* background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%); */
+  /* border-radius: 4px; */
+  /* box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5); */
+}
+
+.player__checkbox label:after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.player__checkbox label:hover::after {
+  opacity: 0.5;
+}
+
+.player__checkbox input[type=checkbox] {
+  visibility: hidden;
+}
+
+.player__checkbox input[type=checkbox]:checked+label:after {
+  opacity: 1;
+}
+
+/* end .squaredFour */
