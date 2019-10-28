@@ -54,70 +54,78 @@
   <section class="player">
     <div class="player__container-tracks">
 
-      <div class="player__track">
-        <button class="player__rec">rec <span class="player__rec-circle"></span></button>
-        <button class="player__del">del</button>
+      <div class="player__track" data-track="firstTrack">
+        <button class="player__rec">rec <span></span></button>
+        <button class="player__stop player__stop--non-active">stop</button>
+        <button class="player__del player__del--locked">del</button>
         <div class="player__music-track"></div>
 
         <div class="player__checkbox">
-          <input type="checkbox" value="None" id="player__checkbox" name="check" />
-          <label for="player__checkbox"></label>
+          <input type="checkbox" value="None" id="track1" name="check" />
+          <label for="track1"></label>
         </div>
       </div>
 
-      <div class="player__track">
-        <button class="player__rec">rec <span class="player__rec-circle"></span></button>
-        <button class="player__del">del</button>
+      <div class="player__track" data-track="secondTrack">
+        <button class="player__rec">rec <span></span></button>
+        <button class="player__stop player__stop--non-active">stop</button>
+        <button class="player__del player__del--locked">del</button>
         <div class="player__music-track"></div>
         <div class="player__checkbox">
-          <input type="checkbox" value="None" id="player__checkbox" name="check" />
-          <label for="player__checkbox"></label>
+          <input type="checkbox" value="None" id="track2" name="check" />
+          <label for="track2"></label>
         </div>
       </div>
 
-      <div class="player__track">
-        <button class="player__rec">rec <span class="player__rec-circle"></span></button>
-        <button class="player__del">del</button>
+      <div class="player__track" data-track="thirdTrack">
+        <button class="player__rec">rec <span></span></button>
+        <button class="player__stop player__stop--non-active">stop</button>
+        <button class="player__del player__del--locked">del</button>
         <div class="player__music-track"></div>
         <div class="player__checkbox">
-          <input type="checkbox" value="None" id="player__checkbox" name="check" />
-          <label for="player__checkbox"></label>
+          <input type="checkbox" value="None" id="track3" name="check" />
+          <label for="track3"></label>
         </div>
       </div>
 
-      <div class="player__track">
-        <button class="player__rec">rec <span class="player__rec-circle"></span></button>
-        <button class="player__del">del</button>
+      <div class="player__track" data-track="fourthTrack">
+        <button class="player__rec">rec <span></span></button>
+        <button class="player__stop player__stop--non-active">stop</button>
+        <button class="player__del player__del--locked">del</button>
         <div class="player__music-track"></div>
         <div class="player__checkbox">
-          <input type="checkbox" value="None" id="player__checkbox" name="check" />
-          <label for="player__checkbox"></label>
+          <input type="checkbox" value="None" id="track4" name="check" />
+          <label for="track4"></label>
         </div>
       </div>
 
-      <div class="player__track">
-        <button class="player__rec">rec <span class="player__rec-circle"></span></button>
-        <button class="player__del">del</button>
+      <div class="player__track" data-track="fifthTrack">
+        <button class="player__rec">rec <span></span></button>
+        <button class="player__stop player__stop--non-active">stop</button>
+        <button class="player__del player__del--locked">del</button>
         <div class="player__music-track"></div>
         <div class="player__checkbox">
-          <input type="checkbox" value="None" id="player__checkbox" name="check" />
-          <label for="player__checkbox"></label>
+          <input type="checkbox" value="None" id="track5" name="check" />
+          <label for="track5"></label>
         </div>
       </div>
 
-      <div class="player__track">
-        <button class="player__rec">rec <span class="player__rec-circle"></span></button>
-        <button class="player__del">del</button>
+      <div class="player__track" data-track="sixthTrack">
+        <button class="player__rec">rec <span></span></button>
+        <button class="player__stop player__stop--non-active">stop</button>
+        <button class="player__del player__del--locked">del</button>
         <div class="player__music-track"></div>
         <div class="player__checkbox">
-          <input type="checkbox" value="None" id="player__checkbox" name="check" />
-          <label for="player__checkbox"></label>
+          <input type="checkbox" value="None" id="track6" name="check" />
+          <label for="track6"></label>
         </div>
       </div>
+
+
 
     </div>
 
-    <div class="player__play"><span class="player__play-figure"></span></div>
+    <div class="player__play"></div>
   </section>
 
   <script src="main.js"></script>
