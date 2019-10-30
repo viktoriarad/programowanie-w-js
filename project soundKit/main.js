@@ -88,7 +88,7 @@ const playSounds = function (e) {
     keySound = e.target.dataset.key;
     recAudio(keySound);
   } else if (e.type === 'keypress') {
-    for (key in instrumensSounds) {
+    for (const key in instrumensSounds) {
       if (e.code === instrumensSounds[key][0]) {
         keySound = key;
         audio = instrumensSounds[key][1];
