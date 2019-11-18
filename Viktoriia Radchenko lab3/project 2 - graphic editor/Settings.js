@@ -1,6 +1,6 @@
 const Settings = () => {
     let color = "#ffffff";
-    let size = 5;
+    // let size = 5;
     let brush = 'round';
 
     const defaultBrightness = 100;
@@ -12,11 +12,24 @@ const Settings = () => {
     const defaultBlur = 0;
     let blur = defaultBlur; // could be from 0 to 100
 
+    const defaultSize = 5;
+    let size = defaultSize;
+
     const getColor = () => color;
     const setColor = (newColor) => color = newColor;
 
     const getSize = () => size;
-    const setSize = (newSize) => size = newSize;
+    const setSize = (newSize, callback) => {
+        if (newSize === 'default') {
+            size = defaultSize;
+        } else {
+            size = parseInt(newSize);
+        }
+
+        if (callback) {
+            callback();
+        }
+    };
 
     const getBrush = () => brush;
     const setBrush = (newBrush) => brush = newBrush;
