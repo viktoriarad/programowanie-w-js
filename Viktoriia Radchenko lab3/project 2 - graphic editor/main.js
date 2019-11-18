@@ -18,15 +18,15 @@ const userCanvas = CanvasObj();
 
 const clearCanvas = () => {
   userDrawing.reset();
-  userSettings.setSize('default');
+  // userSettings.setSize('default');
   userSettings.setBrightness('default');
   userSettings.setContrast('default');
   userSettings.setBlur('default');
-  sizeBtn.value = "5"
+  // sizeBtn.value = "5";
   brightnessBtn.value = "100";
   contrastBtn.value = "100";
   blurBtn.value = "0";
-  userCanvas.redraw();
+  userCanvas.clear();
 };
 
 const addClick = function (x, y, dragging) {
@@ -45,7 +45,8 @@ const mouseMoveHandler = function (e) {
     const mouseY = e.pageY - offsetTop;
 
     addClick(mouseX, mouseY, true);
-    userCanvas.redraw();
+    // userCanvas.redraw();
+    userCanvas.draw(mouseX, mouseY, userSettings.getBrush(), userSettings.getColor(), userSettings.getSize());
   }
 };
 
@@ -57,20 +58,32 @@ const mouseDownHandler = function (e) {
 
   userDrawing.setDrawing(true);
   addClick(mouseX, mouseY);
-  userCanvas.redraw();
+  // userCanvas.redraw();
+  userCanvas.draw(mouseX, mouseY, userSettings.getBrush(), userSettings.getColor(), userSettings.getSize(), true);
 };
 
 imageLoader.addEventListener('change', userCanvas.handleImage);
 
 canvas.addEventListener("mousedown", mouseDownHandler);
 canvas.addEventListener("mousemove", mouseMoveHandler);
-canvas.addEventListener("mouseup", () => userDrawing.setDrawing(false));
+canvas.addEventListener("mouseup", () => {
+  userDrawing.setDrawing(false);
+  ctx.beginPath();
+});
 canvas.addEventListener("mouseleave", () => userDrawing.setDrawing(false));
 
 
-brushCircle.addEventListener('click', () => userSettings.setBrush('round'));
-brushSquare.addEventListener('click', () => userSettings.setBrush('miter'));
-sizeBtn.addEventListener('change', (e) => userSettings.setSize(e.target.value, userCanvas.redraw));
+brushCircle.addEventListener('click', () => {
+  userSettings.setBrush('round');
+  brushCircle.classList.add('toolbar__brush--selected');
+  brushSquare.classList.remove('toolbar__brush--selected');
+});
+brushSquare.addEventListener('click', () => {
+  userSettings.setBrush('square');
+  brushCircle.classList.remove('toolbar__brush--selected');
+  brushSquare.classList.add('toolbar__brush--selected');
+});
+sizeBtn.addEventListener('change', (e) => userSettings.setSize(e.target.value));
 brightnessBtn.addEventListener('change', (e) => userSettings.setBrightness(e.target.value, userCanvas.redraw));
 contrastBtn.addEventListener('change', (e) => userSettings.setContrast(e.target.value, userCanvas.redraw));
 blurBtn.addEventListener('change', (e) => userSettings.setBlur(e.target.value, userCanvas.redraw));

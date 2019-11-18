@@ -3,6 +3,8 @@ const CanvasObj = () => {
     let imgWidth = 0;
     let imgHeight = 0;
     let centerY = 0;
+    let lastX;
+    let lastY;
 
     const saveToImg = () => {
         const downloadLink = document.querySelector('.download-link');
@@ -41,6 +43,35 @@ const CanvasObj = () => {
             img.src = event.target.result;
         }
         reader.readAsDataURL(e.target.files[0]);
+    };
+
+    const draw = function (x, y, brush, color, size, start) {
+        ctx.beginPath();
+        ctx.lineWidth = size;
+        ctx.lineJoin = 'round';
+        ctx.fillStyle = ctx.strokeStyle = color;
+
+        if (brush === 'square') {
+            ctx.fillRect(x - size / 2, y - size / 2, size, size);
+        } else {
+            if (start) {
+                ctx.moveTo(x - 1, y - 1);
+            } else {
+                ctx.moveTo(lastX, lastY);
+            }
+            ctx.lineTo(x, y);
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        lastX = x;
+        lastY = y;
+    };
+
+    const clear = () => {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.filter = 'none';
+        ctx.drawImage(img, 0, centerY, imgWidth, imgHeight);
     };
 
     const redraw = function () {
@@ -88,8 +119,10 @@ const CanvasObj = () => {
     };
 
     return {
+        draw,
         redraw,
         saveToImg,
-        handleImage
+        handleImage,
+        clear
     }
 };
