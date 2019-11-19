@@ -1,5 +1,8 @@
+// Funkcja która zwraca obiekt z przekazanymi do niego właściwościami/metodami
+// Ten obiekt głównie przychowywuje wszystki pozyje myszki użytkownika podczas rysowania na canvasie
+// Dzięki closure hermetyzujemy zmienne points i drawing tak aby były prywatne i nie było do nich dostępu od zewnątrz
 const Drawing = () => {
-    let points = [];
+    const points = [];
     let drawing = false;
 
     const getDrawing = () => drawing;

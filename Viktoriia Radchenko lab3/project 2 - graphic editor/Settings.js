@@ -1,16 +1,18 @@
+// Funkcja która zwraca obiekt z przekazanymi do niego właściwościami/metodami
+// Ten obiekt przychowywuje wybrane ustawienia użytkownikiem takie jak: rozmiar pędzla, kolor, filtry
+// Dzięki closure hermetyzujemy zmienne size, color, brush, brightness, contrast i blur tak aby były prywatne i nie było do nich dostępu od zewnątrz
 const Settings = () => {
     let color = "#ffffff";
-    // let size = 5;
     let brush = 'round';
 
     const defaultBrightness = 100;
-    let brightness = defaultBrightness; // could be from 0 to 200
+    let brightness = defaultBrightness; // can be from 0 to 200
 
     const defaultContrast = 100;
-    let contrast = defaultContrast; // could be from 0 to 200
+    let contrast = defaultContrast; // can be from 0 to 200
 
     const defaultBlur = 0;
-    let blur = defaultBlur; // could be from 0 to 100
+    let blur = defaultBlur; // can be from 0 to 100
 
     const defaultSize = 5;
     let size = defaultSize;

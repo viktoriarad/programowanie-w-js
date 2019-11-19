@@ -1,3 +1,4 @@
+//Pobiranie DOM elementów
 const imageLoader = document.querySelector('.imageLoader');
 const imgUploadField = document.querySelector('.img-upload');
 const brushCircle = document.querySelector('.toolbar__brush--circle');
@@ -12,23 +13,24 @@ const saveBtn = document.querySelector('.toolbar__save');
 const canvas = document.querySelector('.imageCanvas');
 const ctx = canvas.getContext('2d');
 
+//Inicjalizacja głównych obiektów aplikacji
 const userSettings = Settings();
 const userDrawing = Drawing();
 const userCanvas = CanvasObj();
 
+// Funkcja która resetuje filtry, dane obiektu userDrawing i canvas
 const clearCanvas = () => {
   userDrawing.reset();
-  // userSettings.setSize('default');
   userSettings.setBrightness('default');
   userSettings.setContrast('default');
   userSettings.setBlur('default');
-  // sizeBtn.value = "5";
   brightnessBtn.value = "100";
   contrastBtn.value = "100";
   blurBtn.value = "0";
   userCanvas.clear();
 };
 
+// Funkcja która zapisuje każde działania użytkownika na canvasie
 const addClick = function (x, y, dragging) {
   const color = userSettings.getColor();
   const size = userSettings.getSize();
@@ -37,6 +39,7 @@ const addClick = function (x, y, dragging) {
   userDrawing.setPoint(x, y, dragging, color, brush, size);
 };
 
+// Funkcja obsługująca mouseMove event na canvasie. Przy spełnionym warunku, że myszka została naciśnięta, definuje pozycję myszki według canvasu, zapisuje te dane przy pomocy addClick i rysuje to na canvasie przy pomocy metody draw w obiekcie userCanvas
 const mouseMoveHandler = function (e) {
   if (userDrawing.getDrawing() === true) {
     const offsetLeft = (window.innerWidth - this.offsetWidth) / 2;
@@ -45,11 +48,11 @@ const mouseMoveHandler = function (e) {
     const mouseY = e.pageY - offsetTop;
 
     addClick(mouseX, mouseY, true);
-    // userCanvas.redraw();
     userCanvas.draw(mouseX, mouseY, userSettings.getBrush(), userSettings.getColor(), userSettings.getSize());
   }
 };
 
+// Funkcja obsługująca mouseDown event na canvasie. Definuje pozycję myszki według canvasu, zapisuje te dane przy pomocy addClick i rysuje to na canvasie przy pomocy metody draw w obiekcie userCanvas
 const mouseDownHandler = function (e) {
   const offsetLeft = (window.innerWidth - this.offsetWidth) / 2;
   const offsetTop = (window.innerHeight - this.offsetHeight) / 2;
@@ -58,12 +61,13 @@ const mouseDownHandler = function (e) {
 
   userDrawing.setDrawing(true);
   addClick(mouseX, mouseY);
-  // userCanvas.redraw();
   userCanvas.draw(mouseX, mouseY, userSettings.getBrush(), userSettings.getColor(), userSettings.getSize(), true);
 };
 
+
 imageLoader.addEventListener('change', userCanvas.handleImage);
 
+// eventListenery które obserwują działania użytkownika przy pomocy myszki na canvasie
 canvas.addEventListener("mousedown", mouseDownHandler);
 canvas.addEventListener("mousemove", mouseMoveHandler);
 canvas.addEventListener("mouseup", () => {
@@ -72,7 +76,7 @@ canvas.addEventListener("mouseup", () => {
 });
 canvas.addEventListener("mouseleave", () => userDrawing.setDrawing(false));
 
-
+// eventListenery które obsługują clicknięcia na pasku narzędzi
 brushCircle.addEventListener('click', () => {
   userSettings.setBrush('round');
   brushCircle.classList.add('toolbar__brush--selected');
