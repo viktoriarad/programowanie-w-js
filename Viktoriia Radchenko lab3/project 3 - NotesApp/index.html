@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/08b430f50b.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>NotesApp</title>
+</head>
+
+<body>
+  <div class="newNote">
+    <form class="noteForm">
+      <h1 class="newNoteTitle">New note</h1>
+      <input id="new-note-title" class="titleNote" type="text">
+      <textarea name="" id="new-note-description" cols="30" rows="10" class="textNote"></textarea>
+      <div class="pinnedColorsAddPanel">
+        <div class="allcolors">
+          <div class="new-note-color note-color-red" data-color="red"></div>
+          <div class="new-note-color note-color-blue" data-color="blue"></div>
+          <div class="new-note-color note-color-green" data-color="green"></div>
+          <div class="new-note-color note-color-yellow" data-color="yellow"></div>
+          <div class="new-note-color note-color-orange" data-color="orange"></div>
+          <div class="new-note-color note-color-gray" data-color="gray"></div>
+        </div>
+        <!-- <label class="pinnedCheckBox"><input type="checkbox" id="new-note-pinned">Pin it</label> -->
+        <div class="containerCheckbox">
+          <input type="checkbox" id="new-note-pinned" class="newNotePinnedInput">
+          <label class="pinnedCheckBox" for="new-note-pinned" title="Pin it"></label>
+          <span>Pin it</span>
+        </div>
+        <button class="addNote" type="submit">Add</button>
+      </div>
+      <i class="closeIconCreateNote fas fa-times"></i>
+
+    </form>
+  </div>
+
+  <div class="editNote">
+    <form class="editNoteForm">
+      <h1 class="editNoteHeader">Edit note</h1>
+      <input id="edit-note-id" class="invisible" type="text" value="">
+      <input id="edit-note-title" class="editTitleNote" type="text">
+      <textarea name="" id="edit-note-description" cols="30" rows="10" class="editDescriptionNote"></textarea>
+      <div class="pinnedColorsSaveNote">
+
+
+        <div class="allcolors">
+          <div class="edit-note-color note-color-red" data-color="red"></div>
+          <div class="edit-note-color note-color-blue" data-color="blue"></div>
+          <div class="edit-note-color note-color-green" data-color="green"></div>
+          <div class="edit-note-color note-color-yellow" data-color="yellow"></div>
+          <div class="edit-note-color note-color-orange" data-color="orange"></div>
+          <div class="edit-note-color note-color-gray" data-color="gray"></div>
+        </div>
+        <!-- <label><input type="checkbox" id="edit-note-pinned">Pin it</label> -->
+        <div class="containerCheckbox">
+          <input type="checkbox" id="edit-note-pinned" class="newNotePinnedInput">
+          <label class="pinnedCheckBox" for="edit-note-pinned" title="Pin it"></label>
+          <span>Pin it</span>
+        </div>
+        <button class="saveNote" type="submit">Save</button>
+      </div>
+      <i class="closeIconEditNote fas fa-times"></i>
+    </form>
+  </div>
+
+  <section class="page">
+    <!-- <div class="logo"><img src="img/scrap-paper-4708021_640.png" alt="" class="logoImg"></div> -->
+    <div class="panel">
+      <i class="createIconNote far fa-edit" title="Create new note"></i>
+      <form action="">
+        <input type="text" class="searchInput" placeholder="Search by title">
+      </form>
+    </div>
+    <div class="notes">
+      <ul class="notesList">
+      </ul>
+    </div>
+  </section>
+  <script src="main.js"></script>
+</body>
+
+</html>

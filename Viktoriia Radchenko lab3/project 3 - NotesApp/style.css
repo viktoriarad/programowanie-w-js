@@ -1,0 +1,307 @@
+body {
+  position: relative;
+  margin: 0 auto;
+  background-image: url(img/map-of-the-world-2401458_1280.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.invisible {
+  display: none;
+}
+
+.pageBlur {
+  filter: blur(2px);
+  height: 100vh;
+  backdrop-filter: blur(1px);
+}
+
+
+.newNote,
+.editNote {
+  display: none;
+}
+
+.newNoteActive,
+.editNoteActive {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(78, 78, 78, 0.6);
+  position: fixed;
+  z-index: 999;
+}
+
+.closeIconCreateNote,
+.closeIconEditNote {
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  font-size: 30px;
+  cursor: pointer;
+  transform: translate(51%, -51%);
+  color: #144458;
+}
+
+.noteForm,
+.editNoteForm {
+  background-color: rgba(255, 255, 255, .5);
+  padding: 30px;
+  width: 50%;
+  /* border: 1px gray solid; */
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 10px 10px -10px #111;
+}
+
+.newNoteTitle,
+.editNoteHeader {
+  text-align: center;
+  color: #28647e;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.titleNote,
+.editTitleNote {
+  width: 100%;
+  padding: 0 5px;
+  font-size: 20px;
+  height: 30px;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0px 10px 10px -14px #111;
+}
+
+.textNote,
+.editDescriptionNote {
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  margin: 10px 0;
+  border-radius: 2px;
+  box-shadow: 0px 10px 10px -14px #111;
+  border: none;
+}
+
+.panel {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createIconNote {
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #28647e;
+}
+
+.searchInput {
+  width: 200px;
+  height: 28px;
+  padding: 3px 5px;
+  border-radius: 3px;
+  border: none;
+}
+
+.notes {
+  width: 100%;
+}
+
+.notesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+}
+
+.note-block {
+  flex: 0 0 calc(25% - 10px);
+  position: relative;
+  list-style: none;
+  height: 25vh;
+  border-radius: 5px;
+  box-shadow: 0px 10px 10px -10px #111;
+  background-color: rgb(255, 255, 255);
+  margin: 5px;
+  overflow: hidden;
+}
+
+.note-title {
+  font-size: 20px;
+  padding: 10px;
+  font-weight: 800;
+  color: rgb(31, 31, 31);
+}
+
+.note-description {
+  padding: 5px;
+  color: rgb(41, 41, 41);
+  overflow: hidden;
+}
+
+.pinnedColorsAddPanel,
+.pinnedColorsSaveNote {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.addNote,
+.saveNote {
+  border: none;
+  background-color: rgb(40, 100, 126);
+  color: white;
+  height: 21px;
+  width: 50px;
+  margin-left: 50px;
+  padding: 0;
+}
+
+.allcolors {
+  display: block;
+  margin-right: 50px;
+}
+
+.new-note-color,
+.edit-note-color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.new-note-color-selected,
+.edit-note-color-selected {
+  border: 1px solid black;
+}
+
+.note-color-red {
+  background-color: #f28b82;
+}
+
+.note-color-green {
+  background-color: #ccff90;
+}
+
+.note-color-blue {
+  background-color: #cbf0f8;
+}
+
+.note-color-yellow {
+  background-color: #fff475;
+}
+
+.note-color-orange {
+  background-color: #e6c9a8;
+}
+
+.note-color-gray {
+  background-color: #d7aefb;
+}
+
+.pin-icon {
+  position: absolute;
+  right: 18%;
+  cursor: pointer;
+  opacity: 0;
+  transition: .3s;
+  color: #383a4c;
+}
+
+.pin-icon:hover,
+.edit-icon:hover,
+.delete-icon:hover {
+  color: #595b70;
+}
+
+.pin-icon-active {
+  color: #28647e;
+  opacity: 1;
+}
+
+.edit-icon {
+  position: absolute;
+  right: 10%;
+  cursor: pointer;
+  opacity: 0;
+  transition: .3s;
+  color: #383a4c;
+}
+
+.delete-icon {
+  position: absolute;
+  right: 3%;
+  cursor: pointer;
+  opacity: 0;
+  transition: .3s;
+  color: #383a4c;
+}
+
+
+.note-block:hover .pin-icon,
+.note-block:hover .delete-icon,
+.note-block:hover .edit-icon {
+  opacity: 1;
+}
+
+
+
+.containerCheckbox {
+  /* width: 20px; */
+  position: relative;
+}
+
+.pinnedCheckBox {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background: #fcfff4;
+  border: 1px solid #2b102d;
+}
+
+.pinnedCheckBox:after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.containerCheckbox label:hover::after {
+  opacity: 0.5;
+}
+
+.containerCheckbox input[type=checkbox] {
+  visibility: hidden;
+}
+
+.containerCheckbox input[type=checkbox]:checked+label::after {
+  opacity: 1;
+}

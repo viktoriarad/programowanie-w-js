@@ -102,6 +102,8 @@ const CanvasObj = () => {
 
         ctx.drawImage(img, 0, centerY, imgWidth, imgHeight);
 
+        // Iteracja po wszystkich pozycjach myszki użytkownika podczas rysowania na canvasie
+        // ktore sa przechowywane w objekcie userDrawing
         for (let i = 0; i < userDrawing.getLength(); i++) {
 
             const currentPoint = userDrawing.getPoint(i);

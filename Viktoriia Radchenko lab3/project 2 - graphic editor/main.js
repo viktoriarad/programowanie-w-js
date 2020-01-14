@@ -1,4 +1,4 @@
-//Pobiranie DOM elementów
+//Pobieranie DOM elementów
 const imageLoader = document.querySelector('.imageLoader');
 const imgUploadField = document.querySelector('.img-upload');
 const brushCircle = document.querySelector('.toolbar__brush--circle');
