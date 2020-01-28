@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no; viewport-fit=cover">
+<link rel="stylesheet" href="style.css">
+<title>Gyroscope Game</title>
+<body>
+  <div class="start-game">Start Game</div>
+
+  <div class="rotate-msg">
+    <div class="rotate-txt">Please Rotate your device to landscape</div>
+  </div>
+  <div class="pause-msg invisible">
+    <div class="pause-txt">Game is paused. Tap to resume</div>
+  </div>
+  <div class="gameover-msg invisible">
+    <div class="gameover-txt">Game over. Tap to restart</div>
+  </div>
+  <div class="nextlevel-msg invisible">
+    <div class="nextlevel-txt">You won. Tap to continue next level: <span class="nextlevel-nmbr"></span></div>
+  </div>
+
+  <canvas id="gameCanvas" class="game-canvas"></canvas>
+
+  <script src="Game.js" type="application/javascript"></script>
+  <script src="Canvas.js" type="application/javascript"></script>
+  <script src="DOM.js" type="application/javascript"></script>
+  <script src="Device.js" type="application/javascript"></script>
+  <script src="main.js" type="application/javascript"></script>
+</body>
+</html>
