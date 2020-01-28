@@ -53,7 +53,7 @@ const AddForm = () => {
         })
     };
 
-    // Funkcja ktora odpowiada za dodanie notatki i zresetowanie formularza dodawania notatki do defaultowych wartosci
+    // Funkcja ktora odpowiada za dodanie notatki
     const addNewNote = (e) => {
         const selectedColor = Array.from(newNoteAllColors).find(el => el.classList.contains('new-note-color-selected'));
 

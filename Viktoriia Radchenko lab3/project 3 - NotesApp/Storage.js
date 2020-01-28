@@ -1,17 +1,6 @@
 const Storage = (keyName) => {
     const noteKey = keyName;
 
-    const addKeyToStorage = () => {
-        if (localStorage.getItem(noteKey) === null) {
-            setNotesToStorage([]);
-            console.log(`Key {noteKey} was successfully initialized in localStorage`);
-            return true
-        } else {
-            console.log(`Key {noteKey} in localStorage has been initialized already`);
-            return false;
-        }
-    };
-
     // Funkcja zwraca w postaci tablicy wszystkie notatki ktore sa przechowywane do localStorage
     const getNotesFromStorage = () => {
         return JSON.parse(localStorage.getItem(noteKey)) || [];
@@ -63,8 +52,6 @@ const Storage = (keyName) => {
         const noteArray = getNotesFromStorage(noteKey);
         return noteArray.length > 0 ? noteArray[noteArray.length - 1].id + 1 : 0;
     };
-
-    addKeyToStorage(noteKey);
 
     return {
         getNotesFromStorage,

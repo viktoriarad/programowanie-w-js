@@ -50,8 +50,6 @@ const DOM = () => {
         });
     };
 
-
-
     // Funkcja obsluguje dodawanie elementu do DOM struktury strony
     const insertNoteToDOM = (note) => {
         const noteElement = noteDOMElementGenerator(note);
