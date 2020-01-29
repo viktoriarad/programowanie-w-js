@@ -1,3 +1,6 @@
+/**
+ * Funkcja zwraca objekt z metodami, ktory odpowiada za prace na canvasie
+ */
 const Canvas = (canvasParam, ctxParam) => {
     const canvas = canvasParam;
     const ctx = ctxParam;
@@ -33,20 +36,20 @@ const Canvas = (canvasParam, ctxParam) => {
 
         holes.traps.forEach(trap => {
             ctx.beginPath();
-            ctx.arc(trap.x, trap.y, trap.radius, 0, Math.PI*2);
+            ctx.arc(trap.x, trap.y, trap.radius, 0, Math.PI * 2);
             ctx.fillStyle = "#c90c0b";
             ctx.fill();
             ctx.closePath();
         });
 
         ctx.beginPath();
-        ctx.arc(holes.finish.x, holes.finish.y, holes.finish.radius, 0, Math.PI*2);
+        ctx.arc(holes.finish.x, holes.finish.y, holes.finish.radius, 0, Math.PI * 2);
         ctx.fillStyle = "#2bc932";
         ctx.fill();
         ctx.closePath();
 
         ctx.beginPath();
-        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2);
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
         ctx.fillStyle = "#c9c9c9";
         ctx.fill();
         ctx.closePath();

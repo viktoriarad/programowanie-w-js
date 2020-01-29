@@ -1,3 +1,7 @@
+/**
+ * Funkcja zwraca objekt z metodami, ktory odpowiada za prace
+ * z DOM elementami strony (nasluchiwania eventow, modyfikowanie DOM elementow)
+ */
 const DOM = () => {
     const startGameBtn = document.querySelector('.start-game');
     const rotateMsg = document.querySelector('.rotate-msg');
@@ -21,7 +25,6 @@ const DOM = () => {
     let moveBallBy;
     let isLandscapeMode;
     let isPortraitMode;
-    let getOrientationMode;
 
     const setLandscapeModeChecker = (functionToSet) => {
         isLandscapeMode = functionToSet;

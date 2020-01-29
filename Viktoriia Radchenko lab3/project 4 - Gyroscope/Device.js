@@ -1,3 +1,7 @@
+/**
+ * Funkcja zwraca objekt z metodami, ktory odpowiada za prace z urzadzeniem.
+ * Prosi o pozwolenie na API sensorow, sprawdza rozmiar ekranu i orientacje.
+ */
 const Device = () => {
     let motionPermission = false;
     let onGrantedPermission;
@@ -20,7 +24,7 @@ const Device = () => {
             return motionPermission;
         }
 
-        if (typeof(DeviceMotionEvent) !== 'undefined' && typeof(DeviceMotionEvent.requestPermission) === 'function') {
+        if (typeof (DeviceMotionEvent) !== 'undefined' && typeof (DeviceMotionEvent.requestPermission) === 'function') {
             DeviceMotionEvent.requestPermission()
                 .then(response => {
                     if (response === 'granted') {
@@ -45,7 +49,10 @@ const Device = () => {
         const width = iOS === true ? screen.width : window.innerWidth;
         const height = iOS === true ? screen.height : window.innerHeight;
 
-        return {width, height};
+        return {
+            width,
+            height
+        };
     };
 
     /**
@@ -55,7 +62,9 @@ const Device = () => {
     const getOrientation = () => {
         const size = getDefaultSize();
         const defaultOrientation = size.width > size.height ? 'landscape' : 'portrait';
-        const result = {default: defaultOrientation};
+        const result = {
+            default: defaultOrientation
+        };
 
         switch (window.orientation) {
             case 0:

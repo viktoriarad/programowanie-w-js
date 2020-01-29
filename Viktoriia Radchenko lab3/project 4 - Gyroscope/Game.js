@@ -1,8 +1,8 @@
 /**
- *
- * @param {object} gameSize The object which contains game sizes {width: number, height: number}.
- * @param {number} ballSize The radius of ball.
- * @returns {object} The object with methods.
+ * Funkcja zwraca objekt z metodami, ktory odpowiada za logike gry.
+ * Generuje i przechowuje w siebie wlasciwosci wszystkich objektow gry, w tym.
+ * Rowniez odpowiada za przesuwanie pilki, obliczanie nowej pozycji i sprawdzenie
+ * czy nie trafila w pulapke lub do finiszu.
  */
 const Game = (gameSize, ballSize) => {
     const canvasSize = {
@@ -25,10 +25,16 @@ const Game = (gameSize, ballSize) => {
      * @type {{traps: {x: number, y: number, radius: number}[], finish: {x: number, y: number, radius: number}}}
      */
     const holes = {
-        finish: {x: 0, y: 0, radius: ballSize * 1.5},
-        traps: [
-            {x: 0, y: 0, radius: 0}
-        ]
+        finish: {
+            x: 0,
+            y: 0,
+            radius: ballSize * 1.5
+        },
+        traps: [{
+            x: 0,
+            y: 0,
+            radius: 0
+        }]
     };
 
     let level = 0;
@@ -70,7 +76,7 @@ const Game = (gameSize, ballSize) => {
         const holeAmount = 5 + level * 2;
         const radius = 15 + level;
 
-        for (let i = 0 ; i <= holeAmount; i++) {
+        for (let i = 0; i <= holeAmount; i++) {
             const hole = generateHole(radius, trapHoles);
             trapHoles.push(hole);
         }
@@ -83,8 +89,8 @@ const Game = (gameSize, ballSize) => {
      * @void
      */
     const generateHole = (radius, trapHoles) => {
-        const x = Math.floor(Math.random() * (canvasSize.width - radius*2) + radius);
-        const y = Math.floor(Math.random() * (canvasSize.height - radius*2) + radius);
+        const x = Math.floor(Math.random() * (canvasSize.width - radius * 2) + radius);
+        const y = Math.floor(Math.random() * (canvasSize.height - radius * 2) + radius);
 
         const trapCrossing = trapHoles.some(hole => {
             const nearX = Math.abs(hole.x - x) - hole.radius - radius <= 0;
@@ -93,16 +99,20 @@ const Game = (gameSize, ballSize) => {
         });
 
         const ballCrossing = (
-            Math.abs(ball.x - x) - ball.radius - radius <= radius
-            && Math.abs(ball.y - y) - ball.radius - radius <= radius
+            Math.abs(ball.x - x) - ball.radius - radius <= radius &&
+            Math.abs(ball.y - y) - ball.radius - radius <= radius
         );
         const finishCrossing = (
-            Math.abs(holes.finish.x - x) - holes.finish.radius - radius <= 0
-            && Math.abs(holes.finish.y - y) - holes.finish.radius - radius <= 0
+            Math.abs(holes.finish.x - x) - holes.finish.radius - radius <= 0 &&
+            Math.abs(holes.finish.y - y) - holes.finish.radius - radius <= 0
         );
 
         if (trapCrossing || ballCrossing || finishCrossing) return generateHole(radius, trapHoles);
-        return {x, y, radius}
+        return {
+            x,
+            y,
+            radius
+        }
     };
 
     /**
@@ -111,7 +121,7 @@ const Game = (gameSize, ballSize) => {
      */
     const generateBallPosition = () => {
         const x = Math.floor((canvasSize.width * 0.8) + Math.random() * (canvasSize.width * 0.2) - ballSize);
-        const y = Math.floor(Math.random() * (canvasSize.height - ballSize*2) + ballSize);
+        const y = Math.floor(Math.random() * (canvasSize.height - ballSize * 2) + ballSize);
 
         ball.x = x;
         ball.y = y;
@@ -123,7 +133,7 @@ const Game = (gameSize, ballSize) => {
      */
     const generateFinishHolePosition = () => {
         const x = Math.floor(Math.random() * (canvasSize.width * 0.2) + holes.finish.radius);
-        const y = Math.floor(Math.random() * (canvasSize.height - holes.finish.radius*2) + holes.finish.radius);
+        const y = Math.floor(Math.random() * (canvasSize.height - holes.finish.radius * 2) + holes.finish.radius);
 
         holes.finish.x = x;
         holes.finish.y = y;

@@ -1,9 +1,13 @@
+// Inicjalizacja objektu DOM
 const oDOM = DOM();
 
+// Inicjalizacja objektu Device
 const oDevice = Device();
 
+// Inicjalizacja objektu Game
 const oGame = Game(oDevice.getDefaultSize(), 10);
 
+// Inicjalizacja objektu Canvas
 const oCanvas = Canvas(oDOM.getCanvas(), oDOM.getCtx());
 
 oDOM.setDeviceSizeGetter(oDevice.getDefaultSize);
@@ -30,11 +34,14 @@ oCanvas.setBallGetter(oGame.getBall);
 oCanvas.setIsGameStartedGetter(oGame.isStarted);
 oCanvas.setHolesGetter(oGame.getHoles);
 
-
+/**
+ * API sensorow jest dostepne tylko przez zabiezpieczony protokol HTTPS.
+ * Funkcja sprawdza protokol i przekierowuje do niego.
+ */
 const changeProtocolToHTTP = () => {
-    if (location.protocol !== 'https:') {
-      location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-    }
+  if (location.protocol !== 'https:') {
+    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  }
 };
 
 changeProtocolToHTTP();
